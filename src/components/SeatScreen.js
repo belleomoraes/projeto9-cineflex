@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function SeatScreen() {
     return (
       <>
@@ -36,18 +37,8 @@ export default function SeatScreen() {
           </span>
         </div>
   
-        <div className="book">Reservar assento(s)</div>
-        <div className="movieDescription">
-          <div className="moviesSelection">
-            <div className="movie">
-              <img src="https://upload.wikimedia.org/wikipedia/pt/e/e6/Enola_Holmes_poster.jpeg" />
-            </div>
-          </div>
-          <div className="description">
-            <span>Enola Holmes</span>
-            <span>Quinta-feira 15:00</span>
-          </div>
-        </div>
+        <Link to="/sucesso"><div className="book">Reservar assento(s)</div></Link>
+  
       </>
     );
   }
