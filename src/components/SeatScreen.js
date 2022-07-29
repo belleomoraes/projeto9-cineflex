@@ -6,16 +6,42 @@ import Labels from "./Labels";
 import ClientData from "./ClientData";
 import SessionSelectedInformation from "./SessionSelectedInformation";
 
+
+let bookData = {
+  ids:[],
+  name: "",
+  cpf: ""
+}
+
+// const promise = axios.post ("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", bookData);
+// promise.then()
+// promise.catch(returnError)
+
+// function returnError(error) {
+//   console.log("deu erro")
+// }
 function SeatSelection({ name, availability }) {
   const [clicked, setClicked] = useState("seat available");
   return availability === true ? (
     <div
       className={clicked}
       onClick={() => {
-        setClicked("seat selected");
+        if (clicked === "seat available") {
+          setClicked("seat selected");
+          bookData.ids.push(name)
+          console.log(bookData)
+        }
 
         if (clicked === "seat selected") {
           setClicked("seat available");
+          //parei aqui - perguntar 
+          for (let i = 0; i < bookData.ids.length; i++) {
+            if (bookData.ids[i] === name) {
+              bookData.id.pull(i)
+              console.log(bookData)
+              break;
+            }
+          }
         }
       }}
     >
@@ -31,6 +57,7 @@ function SeatSelection({ name, availability }) {
       {name}
     </div>
   );
+
 }
 export default function SeatScreen() {
   const { idSessao } = useParams();
@@ -55,18 +82,20 @@ export default function SeatScreen() {
           ))}
       </div>
       <Labels />
-      <ClientData />
+      <ClientData bookData = {bookData}/>
 
       <Link to="/sucesso">
         <div className="book">Reservar assento(s)</div>
       </Link>
+      
 
-      <SessionSelectedInformation
+
+      {/* <SessionSelectedInformation
       weekday={showtimes.day.weekday}
         hour={showtimes.name}
         name={showtimes.movie.title}
         img={showtimes.movie.posterURL}
-      />
+      /> */}
     </>
   );
 }

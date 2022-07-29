@@ -1,5 +1,6 @@
-export default function ClientData() {
-    return (
+export default function ClientData({bookData}) {
+  console.log(bookData) 
+  return (
         <div className="clientData">
         <span>
           Nome do comprador:
