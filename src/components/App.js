@@ -10,8 +10,8 @@ import "./reset.css"
 export default function App() {
     return (
         <>
-<Head />
 <BrowserRouter>
+<Head />
 <Routes>
 <Route path="/" element={<MainScreen />} />
 <Route path="/sessoes/:idFilme" element={<HourScreen/>} />
