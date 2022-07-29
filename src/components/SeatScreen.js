@@ -3,11 +3,20 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 function SeatSelection({ name, availability }) {
+  const [clicked, setClicked] = useState("seat available")
   return availability === true ? (
-    <div className="seat available">{name}</div>
+    <div className={clicked} onClick = { () => {
+      setClicked ("seat selected")
+    }
+    }>{name} </div>
   ) : (
-    <div className="seat unavailable">{name}</div>
+    <div className="seat unavailable" onClick={() => {
+      alert("Esse assento não está disponível")
+    }}>
+      {name}
+    </div>
   );
 }
 export default function SeatScreen() {
@@ -15,7 +24,9 @@ export default function SeatScreen() {
   const [showtimes, setShowtimes] = useState(false);
 
   useEffect(() => {
-    const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`);
+    const promise = axios.get(
+      `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`
+    );
     promise.then((res) => {
       setShowtimes(res.data);
     });
