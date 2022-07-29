@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import MovieSelectedInformation from "./MovieSelectedInformation"
 
 function SessionsInformation({weekday, date, showtimes}) {
   return (
@@ -43,6 +44,8 @@ export default function HourScreen() {
       {sessions && sessions.days.map((session) => (
         <SessionsInformation key={session.id} weekday={session.weekday} date={session.date} showtimes = {session.showtimes}/>
       ))}
+<MovieSelectedInformation name = {sessions.title} img = {sessions.posterURL}/>
+
     </>
   );
 }

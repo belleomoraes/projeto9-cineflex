@@ -2,19 +2,32 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import Labels from "./Labels";
+import ClientData from "./ClientData";
+import SessionSelectedInformation from "./SessionSelectedInformation";
 
 function SeatSelection({ name, availability }) {
-  const [clicked, setClicked] = useState("seat available")
+  const [clicked, setClicked] = useState("seat available");
   return availability === true ? (
-    <div className={clicked} onClick = { () => {
-      setClicked ("seat selected")
-    }
-    }>{name} </div>
+    <div
+      className={clicked}
+      onClick={() => {
+        setClicked("seat selected");
+
+        if (clicked === "seat selected") {
+          setClicked("seat available");
+        }
+      }}
+    >
+      {name}{" "}
+    </div>
   ) : (
-    <div className="seat unavailable" onClick={() => {
-      alert("Esse assento não está disponível")
-    }}>
+    <div
+      className="seat unavailable"
+      onClick={() => {
+        alert("Esse assento não está disponível");
+      }}
+    >
       {name}
     </div>
   );
@@ -32,7 +45,6 @@ export default function SeatScreen() {
     });
   }, []);
 
-  console.log(showtimes);
   return (
     <>
       <div className="selection">Selecione o(s) assento(s)</div>
@@ -42,35 +54,19 @@ export default function SeatScreen() {
             <SeatSelection key={seat.id} name={seat.name} availability={seat.isAvailable} />
           ))}
       </div>
-      <div className="label">
-        <span>
-          <div className="seat selected"></div>
-          Selecionado
-        </span>
-        <span>
-          <div className="seat available"></div>
-          Disponível
-        </span>
-        <span>
-          <div className="seat unavailable"></div>
-          Indisponível
-        </span>
-      </div>
-
-      <div className="clientData">
-        <span>
-          Nome do comprador:
-          <input type="text" placeholder="Digite seu nome..." />
-        </span>
-        <span>
-          CPF do comprador
-          <input type="number" placeholder="Digite seu CPF..." />
-        </span>
-      </div>
+      <Labels />
+      <ClientData />
 
       <Link to="/sucesso">
         <div className="book">Reservar assento(s)</div>
       </Link>
+
+      <SessionSelectedInformation
+      weekday={showtimes.day.weekday}
+        hour={showtimes.name}
+        name={showtimes.movie.title}
+        img={showtimes.movie.posterURL}
+      />
     </>
   );
 }
