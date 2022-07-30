@@ -54,7 +54,7 @@ function SeatSelection({ name, availability }) {
   );
 
 }
-export default function SeatScreen() {
+export default function SeatScreen({infosSaved}) {
   const { idSessao } = useParams();
   const [showtimes, setShowtimes] = useState(false);
 
@@ -66,7 +66,7 @@ export default function SeatScreen() {
       setShowtimes(res.data);
     });
   }, []);
-
+  
   return (
     <>
       <div className="selection">Selecione o(s) assento(s)</div>
@@ -78,12 +78,16 @@ export default function SeatScreen() {
       </div>
       <Labels />
       <ClientData bookData = {bookData}/>
-      {/* <SessionSelectedInformation
+      {
+        showtimes &&
+        <SessionSelectedInformation
       weekday={showtimes.day.weekday}
         hour={showtimes.name}
         name={showtimes.movie.title}
         img={showtimes.movie.posterURL}
-      /> */}
+      />
+      }
+      
     </>
   );
 }

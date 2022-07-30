@@ -23,7 +23,7 @@ function SessionsInformation({weekday, date, showtimes}) {
   );
 }
 
-export default function HourScreen() {
+export default function HourScreen({infosSaved}) {
   const { idFilme } = useParams();
   const [sessions, setSessions] = useState(false);
 
@@ -37,6 +37,7 @@ export default function HourScreen() {
       })
   }, []);
 
+  
   return (
     <>
       <div className="selection">Selecione o horário</div>
