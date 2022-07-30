@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -13,7 +13,7 @@ let bookData = {
   cpf: ""
 }
 
-// const promise = axios.post ("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", bookData);
+
 // promise.then()
 // promise.catch(returnError)
 
@@ -78,13 +78,6 @@ export default function SeatScreen() {
       </div>
       <Labels />
       <ClientData bookData = {bookData}/>
-
-      <Link to="/sucesso">
-        <div className="book">Reservar assento(s)</div>
-      </Link>
-      
-
-
       {/* <SessionSelectedInformation
       weekday={showtimes.day.weekday}
         hour={showtimes.name}

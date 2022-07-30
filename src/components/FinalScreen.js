@@ -1,5 +1,22 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+// let bookData = {
+//   ids:[],
+//   name: "",
+//   cpf: ""
+// }
 export default function FinalScreen() {
+  const [info, setInfo] = useState([]);
+
+	useEffect(() => {
+		const promise = axios.get("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many")
+
+		promise.then(res => {
+			setInfo(res.data);
+		});
+	}, []);
     return (
       <>
         <div className="summary">
@@ -16,8 +33,8 @@ export default function FinalScreen() {
           </div>
           <div>
             <h1>Comprador</h1>
-            <h2>Nome: Isabelle Moraes</h2>
-            <h2>CPF: 123.123.123-12</h2>
+            <h2>Nome: {info.name}</h2>
+            <h2>CPF: {info.cpf}</h2>
           </div>
         </div>
   
