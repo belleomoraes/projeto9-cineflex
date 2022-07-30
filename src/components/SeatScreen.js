@@ -34,16 +34,11 @@ function SeatSelection({ name, availability }) {
 
         if (clicked === "seat selected") {
           setClicked("seat available");
-          //parei aqui - perguntar 
-          for (let i = 0; i < bookData.ids.length; i++) {
-            if (bookData.ids[i] === name) {
-              bookData.id.pull(i)
-              console.log(bookData)
-              break;
-            }
+          bookData.ids = bookData.ids.filter(book => book !== name)
+          console.log(bookData)
           }
         }
-      }}
+      }
     >
       {name}{" "}
     </div>
