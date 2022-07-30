@@ -8,15 +8,15 @@ import axios from "axios";
 //   cpf: ""
 // }
 export default function FinalScreen() {
-  const [info, setInfo] = useState([]);
+  // const [info, setInfo] = useState([]);
 
-	useEffect(() => {
-		const promise = axios.get("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many")
+	// useEffect(() => {
+	// 	const promise = axios.get("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many")
 
-		promise.then(res => {
-			setInfo(res.data);
-		});
-	}, []);
+	// 	promise.then(res => {
+	// 		setInfo(res.data);
+	// 	});
+	// }, []);
     return (
       <>
         <div className="summary">
@@ -33,8 +33,8 @@ export default function FinalScreen() {
           </div>
           <div>
             <h1>Comprador</h1>
-            <h2>Nome: {info.name}</h2>
-            <h2>CPF: {info.cpf}</h2>
+            <h2>Nome: </h2>
+            <h2>CPF: </h2>
           </div>
         </div>
   

@@ -19,10 +19,19 @@ export default function ClientData({bookData}) {
   }
 
   function sendForm () {
-    const promise = axios.post ("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", bookData);
+    console.log(form)
+    const body = {
+      ...form,
+    }
+
+    console.log(body)
+    const promise = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", body);
 promise.then ((res => {
+  console.log("deu bom")
   navigate('/sucesso')
 }))
+
+console.log(promise)
   }
   return (
     <>
