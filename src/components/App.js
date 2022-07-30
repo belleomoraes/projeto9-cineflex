@@ -22,8 +22,8 @@ export default function App() {
         <Head />
         <Routes>
           <Route path="/" element={<MainScreen />} />
-          <Route path="/sessoes/:idFilme" element={<HourScreen infoSaved = {infosSaved}/>} />
-          <Route path="/assentos/:idSessao" element={<SeatScreen />} />
+          <Route path="/sessoes/:idFilme" element={<HourScreen />} />
+          <Route path="/assentos/:idSessao" element={<SeatScreen infoSaved = {infosSaved}/>} />
           <Route path="/sucesso" element={<FinalScreen infoSaved = {infosSaved}/>} />
         </Routes>
       </BrowserRouter>

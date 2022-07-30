@@ -213,12 +213,17 @@ line-height: 20px;
   width: 100%;
   height: 15vh;
   background-color: #dfe6ed;
-  display: flex;
-  align-items: center;
   position: fixed;
   bottom: 0;
   right: 0;
-  font-size: 22px;
+  font-size: 18px;
+}
+
+.movieDescription > .moviesSelection {
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+  margin: 1px;
 }
 
 .movieDescription img {

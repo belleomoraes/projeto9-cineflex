@@ -5,10 +5,11 @@ export default function SessionSelectedInformation ({weekday, hour, img, name}) 
           <div className="movie">
             <img src={img} />
           </div>
-        </div>
+        
         <div className="description">
           <span>{name}</span>
           <span>{weekday} - {hour}</span>
+        </div>
         </div>
       </div>
     )

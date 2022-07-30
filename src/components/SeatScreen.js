@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -6,20 +5,12 @@ import Labels from "./Labels";
 import ClientData from "./ClientData";
 import SessionSelectedInformation from "./SessionSelectedInformation";
 
-
 let bookData = {
-  ids:[],
+  ids: [],
   name: "",
-  cpf: ""
-}
+  cpf: "",
+};
 
-
-// promise.then()
-// promise.catch(returnError)
-
-// function returnError(error) {
-//   console.log("deu erro")
-// }
 function SeatSelection({ name, availability }) {
   const [clicked, setClicked] = useState("seat available");
   return availability === true ? (
@@ -28,17 +19,16 @@ function SeatSelection({ name, availability }) {
       onClick={() => {
         if (clicked === "seat available") {
           setClicked("seat selected");
-          bookData.ids.push(name)
-          console.log(bookData)
+          bookData.ids.push(name);
+          console.log(bookData);
         }
 
         if (clicked === "seat selected") {
           setClicked("seat available");
-          bookData.ids = bookData.ids.filter(book => book !== name)
-          console.log(bookData)
-          }
+          bookData.ids = bookData.ids.filter((book) => book !== name);
+          console.log(bookData);
         }
-      }
+      }}
     >
       {name}{" "}
     </div>
@@ -52,7 +42,6 @@ function SeatSelection({ name, availability }) {
       {name}
     </div>
   );
-
 }
 export default function SeatScreen({infosSaved}) {
   const { idSessao } = useParams();
@@ -66,7 +55,7 @@ export default function SeatScreen({infosSaved}) {
       setShowtimes(res.data);
     });
   }, []);
-  
+
   return (
     <>
       <div className="selection">Selecione o(s) assento(s)</div>
@@ -77,17 +66,16 @@ export default function SeatScreen({infosSaved}) {
           ))}
       </div>
       <Labels />
-      <ClientData bookData = {bookData}/>
-      {
-        showtimes &&
+      <ClientData bookData={bookData} />
+      {showtimes && (
         <SessionSelectedInformation
-      weekday={showtimes.day.weekday}
-        hour={showtimes.name}
-        name={showtimes.movie.title}
-        img={showtimes.movie.posterURL}
-      />
-      }
-      
+          weekday={showtimes.day.weekday}
+          hour={showtimes.name}
+          name={showtimes.movie.title}
+          img={showtimes.movie.posterURL}
+        />
+        
+      )}
     </>
   );
 }

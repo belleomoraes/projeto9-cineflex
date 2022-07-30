@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-export default function FinalScreen({infosSaved}) {
+export default function FinalScreen() {
 
     return (
       <>
@@ -21,8 +21,8 @@ export default function FinalScreen({infosSaved}) {
           </div>
           <div>
             <h1>Comprador</h1>
-            <h2>Nome: {infosSaved.name}</h2>
-            <h2>CPF: {infosSaved.cpf}</h2>
+            <h2>Nome: </h2>
+            <h2>CPF: </h2>
           </div>
         </div>
   
