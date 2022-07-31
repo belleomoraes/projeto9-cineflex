@@ -1,28 +1,29 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
-
+import {useLocation} from 'react-router-dom';
 
 export default function FinalScreen() {
-
+  const location = useLocation()
+  
+  console.log(location.state.seats)
     return (
       <>
         <div className="summary">
           <p> Pedido feito com sucesso! </p>
           <div>
             <h1>Filme e sessão</h1>
-            <h2>Enola Holmes</h2>
-            <h2>24/06/2022 13:00</h2>
+            <h2>{location.state.movie}</h2>
+            <h2>{location.state.date} - {location.state.hour}</h2>
           </div>
           <div>
             <h1>Ingressos</h1>
-            <h2>Assento 1</h2>
-            <h2>Assento 2</h2>
+            {location.state.seats.map((seat) => (
+              <h2>Assento {seat}</h2>
+            ))}
           </div>
           <div>
             <h1>Comprador</h1>
-            <h2>Nome: </h2>
-            <h2>CPF: </h2>
+            <h2>Nome: {location.state.name} </h2>
+            <h2>CPF: {location.state.cpf} </h2>
           </div>
         </div>
   

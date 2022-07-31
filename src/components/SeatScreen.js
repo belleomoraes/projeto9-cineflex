@@ -66,7 +66,7 @@ export default function SeatScreen({infosSaved}) {
           ))}
       </div>
       <Labels />
-      <ClientData bookData={bookData} />
+      <ClientData bookData={bookData} showtimes = {showtimes}/>
       {showtimes && (
         <SessionSelectedInformation
           weekday={showtimes.day.weekday}
