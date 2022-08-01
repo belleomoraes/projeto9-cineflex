@@ -217,17 +217,17 @@ line-height: 20px;
   bottom: 0;
   right: 0;
   font-size: 18px;
+  
 }
 
 .movieDescription > .moviesSelection {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: space-between;
   margin: 1px;
 }
 
 .movieDescription img {
-  background-color: red;
   width: 9vw;
   height: 8vh;
 }
@@ -235,9 +235,11 @@ line-height: 20px;
 .movieDescription .movie {
   width: 11vw;
   height: 10vh;
+  
 }
 
 .description {
   display: flex;
   flex-direction: column;
+  
 }

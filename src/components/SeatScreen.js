@@ -5,28 +5,24 @@ import Labels from "./Labels";
 import ClientData from "./ClientData";
 import SessionSelectedInformation from "./SessionSelectedInformation";
 
-let bookData = {
-  ids: [],
-  name: "",
-  cpf: "",
-};
 
-function SeatSelection({ name, availability }) {
+function SeatSelection({ name, availability, seatId, seatsId, bookData }) {
   const [clicked, setClicked] = useState("seat available");
+
   return availability === true ? (
     <div
       className={clicked}
       onClick={() => {
         if (clicked === "seat available") {
           setClicked("seat selected");
-          bookData.ids.push(name);
-          console.log(bookData);
+          bookData.ids.push(seatId);
+          seatsId.push(name);
         }
 
         if (clicked === "seat selected") {
           setClicked("seat available");
-          bookData.ids = bookData.ids.filter((book) => book !== name);
-          console.log(bookData);
+          bookData.ids = bookData.ids.filter((book) => book !== seatId);
+          seatsId = seatsId.filter((book) => book !== name);
         }
       }}
     >
@@ -43,9 +39,16 @@ function SeatSelection({ name, availability }) {
     </div>
   );
 }
-export default function SeatScreen({infosSaved}) {
+export default function SeatScreen() {
   const { idSessao } = useParams();
   const [showtimes, setShowtimes] = useState(false);
+  let seatsId = [];
+  let bookData = {
+    ids: [],
+    name: "",
+    cpf: "",
+  };
+  
 
   useEffect(() => {
     const promise = axios.get(
@@ -62,11 +65,18 @@ export default function SeatScreen({infosSaved}) {
       <div className="seats">
         {showtimes &&
           showtimes.seats.map((seat) => (
-            <SeatSelection key={seat.id} name={seat.name} availability={seat.isAvailable} />
+            <SeatSelection
+              key={seat.id}
+              name={seat.name}
+              seatId={seat.id}
+              availability={seat.isAvailable}
+              seatsId={seatsId}
+              bookData = {bookData}
+            />
           ))}
       </div>
       <Labels />
-      <ClientData bookData={bookData} showtimes = {showtimes}/>
+      <ClientData bookData={bookData} showtimes={showtimes} seatsId={seatsId} />
       {showtimes && (
         <SessionSelectedInformation
           weekday={showtimes.day.weekday}
@@ -74,7 +84,6 @@ export default function SeatScreen({infosSaved}) {
           name={showtimes.movie.title}
           img={showtimes.movie.posterURL}
         />
-        
       )}
     </>
   );

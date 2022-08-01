@@ -23,7 +23,7 @@ function SessionsInformation({weekday, date, showtimes}) {
   );
 }
 
-export default function HourScreen({infosSaved}) {
+export default function HourScreen() {
   const { idFilme } = useParams();
   const [sessions, setSessions] = useState(false);
 

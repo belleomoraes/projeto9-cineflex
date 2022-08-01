@@ -8,14 +8,6 @@ import "./style.css";
 import "./reset.css";
 
 export default function App() {
-    const infosSaved = {
-        movieName: "",
-        date: "",
-        hour: "",
-        seats: [],
-        name: "",
-        cpf: ""
-    }
   return (
     <>
       <BrowserRouter>
@@ -23,8 +15,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<MainScreen />} />
           <Route path="/sessoes/:idFilme" element={<HourScreen />} />
-          <Route path="/assentos/:idSessao" element={<SeatScreen infoSaved = {infosSaved}/>} />
-          <Route path="/sucesso" element={<FinalScreen infoSaved = {infosSaved}/>} />
+          <Route path="/assentos/:idSessao" element={<SeatScreen />} />
+          <Route path="/sucesso" element={<FinalScreen />} />
         </Routes>
       </BrowserRouter>
     </>
